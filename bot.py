@@ -1,5 +1,6 @@
 # 導入Discord.py模組
 import discord
+from secret import TOKEN
 from discord.ext import commands
 
 # client是跟discord連接，intents是要求機器人的權限
@@ -23,4 +24,4 @@ async def on_message(message):
     if message.content == "Hello":
         await message.channel.send("Hello, world!")
 
-client.run("MTExNTEyNDgyNDA1MDc3NDEwNw.GUBfs7.l27u7voHTxTdQRYkfO5UULWY3epVvYrxcUXw8A")
+client.run(TOKEN)
