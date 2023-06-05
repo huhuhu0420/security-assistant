@@ -3,6 +3,7 @@ import discord
 from bottoken import TOKEN
 from discord.ext import commands
 from discord import app_commands
+from password_strength import PasswordStats
 
 serverid = 919254033938665503
 
@@ -12,9 +13,10 @@ intents.message_content = True
 client = discord.Client(intents = intents)
 tree = app_commands.CommandTree(client)
 
-@tree.command(name = "commandname", description = "My first application Command", guild=discord.Object(id=serverid)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
-async def first_command(interaction):
-    await interaction.response.send_message("Hello!")
+@tree.command(name = "password", description = "passwd score", guild=discord.Object(id=serverid)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
+async def first_command(interaction:discord.Integration, passwd:str):
+    stats = PasswordStats(passwd)
+    await interaction.response.send_message("your password is " + passwd + "\nand your password's strength is: " + str(stats.strength()))
 
 # 調用event函式庫
 @client.event
