@@ -1,6 +1,6 @@
 # 導入Discord.py模組
 import discord
-from secret import TOKEN
+from bottoken import TOKEN
 from discord.ext import commands
 
 # client是跟discord連接，intents是要求機器人的權限
