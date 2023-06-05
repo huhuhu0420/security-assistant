@@ -1,11 +1,10 @@
 # 導入Discord.py模組
 import discord
-from bottoken import TOKEN
+import variebles
 from discord.ext import commands
 from discord import app_commands
 from password_strength import PasswordStats
 
-serverid = 919254033938665503
 
 # client是跟discord連接，intents是要求機器人的權限
 intents = discord.Intents.default()
@@ -13,7 +12,7 @@ intents.message_content = True
 client = discord.Client(intents = intents)
 tree = app_commands.CommandTree(client)
 
-@tree.command(name = "password", description = "passwd score", guild=discord.Object(id=serverid)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
+@tree.command(name = "password", description = "passwd score", guild=discord.Object(id=variebles.SERVERID)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
 async def first_command(interaction:discord.Integration, passwd:str):
     stats = PasswordStats(passwd)
     await interaction.response.send_message("your password is " + passwd + "\nand your password's strength is: " + str(stats.strength()))
@@ -22,7 +21,7 @@ async def first_command(interaction:discord.Integration, passwd:str):
 @client.event
 # 當機器人完成啟動
 async def on_ready():
-    await tree.sync(guild=discord.Object(id=serverid))
+    await tree.sync(guild=discord.Object(id=variebles.SERVERID))
     print(f"ready --> {client.user}")
 
 @client.event
@@ -35,4 +34,4 @@ async def on_message(message):
     if message.content == "Hello":
         await message.channel.send("Hello, world!")
 
-client.run(TOKEN)
+client.run(variebles.TOKEN)
