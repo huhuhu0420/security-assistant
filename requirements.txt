@@ -1,0 +1,14 @@
+aiohttp==3.8.4
+aiosignal==1.3.1
+async-timeout==4.0.2
+attrs==23.1.0
+charset-normalizer==3.1.0
+discord-message-components==2.1.1
+discord-py-buttons==1.1.3
+discord.py @ git+https://github.com/Rapptz/discord.py@e6d2d82803d79cdd3fccecb7c5fd473e98100787
+frozenlist==1.3.3
+idna==3.4
+multidict==6.0.4
+password-strength==0.0.3.post2
+six==1.16.0
+yarl==1.9.2
